@@ -4,12 +4,14 @@ import Borrow from "./components/Borrow";
 import Lend from "./components/Lend";
 import HomePage from "./components/HomePage";
 import { WalletProvider } from "./Contexts/WalletContext";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <WalletProvider>
+        <ToastContainer />
           <Routes>
             <Route path="/">
               <Route index element={<LaunchApp />} />

@@ -1,5 +1,7 @@
 import { useState, useContext } from "react";
 import { WalletContext } from "../Contexts/WalletContext";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function ConnectWallet() {
   const { buttonText } = useContext(WalletContext);
@@ -24,6 +26,16 @@ function ConnectWallet() {
           setLoading(false);
           setButtonText(accountText);
           setConnected(true);
+          toast.success("Connected with Metamask", {
+            position: "bottom-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });          
         }, 3000);
       } catch (error) {
         console.error("Error connecting to MetaMask:", error);
