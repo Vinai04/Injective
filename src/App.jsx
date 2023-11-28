@@ -1,21 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Navbar from './components/Navbar'
-import LaunchApp from './components/LaunchApp'
-
+import LaunchApp from "./components/LaunchApp";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Borrow from "./components/Borrow";
+import Lend from "./components/Lend";
+import HomePage from "./components/HomePage";
+import { WalletProvider } from "./Contexts/WalletContext";
 
 function App() {
-
   return (
     <>
-      <div className='min-h-screen p-4 bg-background-pattern bg-no-repeat bg-cover bg-center'>
-        <Navbar />
-        <LaunchApp />
-      </div>
+      <BrowserRouter>
+        <WalletProvider>
+          <Routes>
+            <Route path="/">
+              <Route index element={<LaunchApp />} />
+              <Route path="home" element={<HomePage />} />
+              <Route path="borrow" element={<Borrow />} />
+              <Route path="lend" element={<Lend />} />
+            </Route>
+          </Routes>
+        </WalletProvider>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

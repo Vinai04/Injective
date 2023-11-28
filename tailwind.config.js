@@ -16,7 +16,8 @@ export default {
         'violet' : '#39065D'
       },
       backgroundImage: {
-        'background-pattern': "url('/public/launchpage_bg.svg')"
+        'launchpage_bg': "url('/public/launchpage_bg.svg')",
+        'homepage_bg' : "url('/public/homepage_bg.jpg')"
       },
       animation: {
         blob: "blob 7s infinite"
