@@ -83,7 +83,7 @@ const BorrowOrderForm = (props) => {
             >
               <img
                 className="w-6 h-6 me-2 rounded-full"
-                src={`../../public/${optionAmount}icon.svg`}
+                src={`${optionAmount}icon.svg`}
                 alt="Jese image"
               />
               {optionAmount}
@@ -124,7 +124,7 @@ const BorrowOrderForm = (props) => {
                   <div className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                     <img
                       className="w-6 h-6 me-2 rounded-full"
-                      src="../../public/ETHicon.svg"
+                      src="ETHicon.svg"
                       alt="Jese image"
                     />
                     ETH
@@ -139,7 +139,7 @@ const BorrowOrderForm = (props) => {
                   <div className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                     <img
                       className="w-6 h-6 me-2 rounded-full"
-                      src="../../public/DAIicon.svg"
+                      src="DAIicon.svg"
                       alt="Jese image"
                     />
                     DAI
@@ -154,7 +154,7 @@ const BorrowOrderForm = (props) => {
                   <div className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                     <img
                       className="w-6 h-6 me-2 rounded-full"
-                      src="../../public/USDCicon.svg"
+                      src="USDCicon.svg"
                       alt="Jese image"
                     />
                     USDC
@@ -169,7 +169,7 @@ const BorrowOrderForm = (props) => {
                   <div className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                     <img
                       className="w-6 h-6 me-2 rounded-full"
-                      src="../../public/WBTCicon.svg"
+                      src="WBTCicon.svg"
                       alt="Jese image"
                     />
                     WBTC
@@ -207,7 +207,7 @@ const BorrowOrderForm = (props) => {
             >
               <img
                 className="w-6 h-6 me-2 rounded-full"
-                src={`../../public/${optionCollateral}icon.svg`}
+                src={`${optionCollateral}icon.svg`}
                 alt="Jese image"
               />
               {optionCollateral}
@@ -251,7 +251,7 @@ const BorrowOrderForm = (props) => {
                   >
                     <img
                       className="w-6 h-6 me-2 rounded-full"
-                      src="../../public/ETHicon.svg"
+                      src="ETHicon.svg"
                       alt="Jese image"
                     />
                     ETH
@@ -269,7 +269,7 @@ const BorrowOrderForm = (props) => {
                   >
                     <img
                       className="w-6 h-6 me-2 rounded-full"
-                      src="../../public/DAIicon.svg"
+                      src="DAIicon.svg"
                       alt="Jese image"
                     />
                     DAI
@@ -287,7 +287,7 @@ const BorrowOrderForm = (props) => {
                   >
                     <img
                       className="w-6 h-6 me-2 rounded-full"
-                      src="../../public/USDCicon.svg"
+                      src="USDCicon.svg"
                       alt="Jese image"
                     />
                     USDC
@@ -305,7 +305,7 @@ const BorrowOrderForm = (props) => {
                   >
                     <img
                       className="w-6 h-6 me-2 rounded-full"
-                      src="../../public/WBTCicon.svg"
+                      src="WBTCicon.svg"
                       alt="Jese image"
                     />
                     WBTC

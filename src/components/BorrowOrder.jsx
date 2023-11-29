@@ -35,7 +35,7 @@ const BorrowOrder = () => {
                   <div className="flex items-center">
                     <img
                       className="w-24 h-24 me-2 rounded-full"
-                      src={`../../public/${id}icon.svg`}
+                      src={`${id}icon.svg`}
                       alt="Jese image"
                     />
                     <h1 className="text-7xl font-bold text-white font-poppins px-6 drop-shadow-lg min-w-full shadow-black">
@@ -47,7 +47,7 @@ const BorrowOrder = () => {
                   </h1>
                   <img
                     className="-mt-28 w-full rounded-3xl"
-                    src={`../../public/yield_curve.png`}
+                    src={`yield_curve.png`}
                     alt=""
                   />
                 </div>
