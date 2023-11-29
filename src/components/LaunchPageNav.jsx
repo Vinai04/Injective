@@ -17,7 +17,8 @@ function LaunchPageNav() {
                 <button
                   type="button"
                   className="flex text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl 
-            font-medium rounded-lg text-2xl px-6 py-4 text-center me-2 mb-2 transform transition duration-500 hover:scale-110"
+            font-medium rounded-lg text-2xl px-6 py-4 text-center me-2 mb-2 transform transition duration-500 hover:scale-110
+            hover:shadow-black hover:shadow-md"
                 >
                   Launch App
                   <div className="mt-1.5 ml-2">

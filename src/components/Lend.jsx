@@ -11,6 +11,7 @@ const Lend = () => {
     img: "ethereum.svg",
     mode: "HIGH",
     method: "LEND",
+    page: "lendwithconfidence"
   };
   const dai = {
     name: "DAI",
@@ -18,6 +19,7 @@ const Lend = () => {
     img: "dai.svg",
     mode: "HIGH",
     method: "LEND",
+    page: "lendwithconfidence"
   };
   const usdc = {
     name: "USDC",
@@ -25,6 +27,7 @@ const Lend = () => {
     img: "usdc.svg",
     mode: "HIGH",
     method: "LEND",
+    page: "lendwithconfidence"
   };
   const wbtc = {
     name: "WBTC",
@@ -32,6 +35,7 @@ const Lend = () => {
     img: "wbtc.svg",
     mode: "HIGH",
     method: "LEND",
+    page: "lendwithconfidence"
   };
 
   const [loading, setLoading] = useState(true);

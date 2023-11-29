@@ -5,6 +5,7 @@ import Lend from "./components/Lend";
 import HomePage from "./components/HomePage";
 import { WalletProvider } from "./Contexts/WalletContext";
 import { ToastContainer } from "react-toastify";
+import BorrowOrder from "./components/BorrowOrder";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
               <Route path="home" element={<HomePage />} />
               <Route path="borrow" element={<Borrow />} />
               <Route path="lend" element={<Lend />} />
+              <Route path="borrow/:id" element={<BorrowOrder />} />
+              <Route path="lend/:id" element={<BorrowOrder />} />
             </Route>
           </Routes>
         </WalletProvider>

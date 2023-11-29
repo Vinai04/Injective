@@ -12,6 +12,7 @@ const Borrow = () => {
     img: "ethereum.svg",
     mode: "LOW",
     method: "BORROW",
+    page: "borroworder"
   };
   const dai = {
     name: "DAI",
@@ -19,6 +20,7 @@ const Borrow = () => {
     img: "dai.svg",
     mode: "LOW",
     method: "BORROW",
+    page: "borroworder"
   };
   const usdc = {
     name: "USDC",
@@ -26,6 +28,7 @@ const Borrow = () => {
     img: "usdc.svg",
     mode: "LOW",
     method: "BORROW",
+    page: "borroworder"
   };
   const wbtc = {
     name: "WBTC",
@@ -33,6 +36,7 @@ const Borrow = () => {
     img: "wbtc.svg",
     mode: "LOW",
     method: "BORROW",
+    page: "borroworder"
   };
 
   const [loading, setLoading] = useState(true);

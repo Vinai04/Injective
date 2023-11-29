@@ -13,7 +13,7 @@ function Navbar() {
             <div className="flex-shrink-0 z-10">
               <Link to="/">
                 <button className="flex items-center space-x-2">
-                  <img src="ratelock_logo.svg" alt="Logo" className="h-16" />
+                  <img src="../../public/ratelock_logo.svg" alt="Logo" className="h-16" />
                 </button>
               </Link>
             </div>

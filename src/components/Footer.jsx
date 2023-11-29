@@ -8,7 +8,7 @@ const Footer = () => {
     >
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-2">
         <div className="sm:flex sm:items-center sm:justify-between">
-          <img src="ratelock_logo.svg" className="h-12" alt="Flowbite Logo" />
+          <img src="../../public/ratelock_logo.svg" className="h-12" alt="Ratelock Logo" />
           <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
           <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
             © 2023 Ratelock. All Rights Reserved.
