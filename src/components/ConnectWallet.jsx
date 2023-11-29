@@ -79,7 +79,7 @@ function ConnectWallet() {
         )}
 
         {!Loading && (
-          <img src="metamask_icon.svg" alt="Logo" className="h-8 mr-2" />
+          <img src="/metamask_icon.svg" alt="Logo" className="h-8 mr-2" />
         )}
         {buttonText}
       </button>
