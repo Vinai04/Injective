@@ -43,7 +43,7 @@ const BorrowOrder = () => {
                     </h1>
                   </div>
                   <h1 className="text-6xl text-white font-semibold">
-                    FIXED APY
+                    Fixed APY
                   </h1>
                   <img
                     className="-mt-28 w-full rounded-3xl"
