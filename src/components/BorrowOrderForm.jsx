@@ -1,6 +1,8 @@
 import React from "react";
 import { WalletContext } from "../Contexts/WalletContext";
 import { useState, useContext } from "react";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const BorrowOrderForm = (props) => {
   const { connected } = useContext(WalletContext);
@@ -19,9 +21,28 @@ const BorrowOrderForm = (props) => {
     setIsDropdownOpenCollateral(!isDropdownOpenCollateral);
   };
 
+  const handleFormSubmit = (event) => {
+    event.preventDefault()
+    console.log("Submitted!")
+  }
+
+  const handleDisabledButton = (event) => {
+    event.preventDefault()
+    toast.error("Wallet not Connected!", {
+      position: "bottom-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });      
+  }
+
   return (
     <div>
-      <form className="max-w-fit mx-auto bg-white px-16 py-16 rounded-2xl shadow-black shadow-md">
+      <form onSubmit={ connected ? handleFormSubmit : handleDisabledButton} className="max-w-fit mx-auto bg-white px-16 py-16 rounded-2xl shadow-black shadow-md">
         <div className="mb-12">
           <div className="-mb-3">
             <span className="text-4xl text-gray-900 font-semibold">
@@ -317,7 +338,8 @@ const BorrowOrderForm = (props) => {
         </div>
         <button
           type="submit"
-          className="text-white bg-green-600 mt-2 hover:bg-green-500 font-medium rounded-lg text-sm w-full px-5 py-4 text-center"
+          className={`text-white font-medium rounded-lg text-lg w-full px-5 py-4 text-center
+          ${connected ? "bg-green-600 mt-2 hover:bg-green-500" : "cursor-not-allowed bg-gray-600 mt-2 hover:bg-gray-500"}`}
         >
           {connected ? "Confirm & Submit Trade" : "Connect Wallet to Trade"}
         </button>
