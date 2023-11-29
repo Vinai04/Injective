@@ -8,7 +8,7 @@ const Lend = () => {
   const eth = {
     name: "ETH",
     rate: "4.02",
-    img: "ethereum.svg",
+    img: "/ethereum.svg",
     mode: "HIGH",
     method: "LEND",
     page: "lendwithconfidence"
@@ -16,7 +16,7 @@ const Lend = () => {
   const dai = {
     name: "DAI",
     rate: "6.16",
-    img: "dai.svg",
+    img: "/dai.svg",
     mode: "HIGH",
     method: "LEND",
     page: "lendwithconfidence"
@@ -24,7 +24,7 @@ const Lend = () => {
   const usdc = {
     name: "USDC",
     rate: "6.48",
-    img: "usdc.svg",
+    img: "/usdc.svg",
     mode: "HIGH",
     method: "LEND",
     page: "lendwithconfidence"
@@ -32,7 +32,7 @@ const Lend = () => {
   const wbtc = {
     name: "WBTC",
     rate: "2.00",
-    img: "wbtc.svg",
+    img: "/wbtc.svg",
     mode: "HIGH",
     method: "LEND",
     page: "lendwithconfidence"

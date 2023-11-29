@@ -9,7 +9,7 @@ function LaunchPageNav() {
           <div className="flex justify-between items-center">
             <div className="flex-shrink-0 z-10">
               <button className="flex items-center space-x-2">
-                <img src="ratelock_logo.svg" alt="Logo" className="w-64 h-18" />
+                <img src="/ratelock_logo.svg" alt="Logo" className="w-64 h-18" />
               </button>
             </div>
             <div className="z-10">

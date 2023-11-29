@@ -54,7 +54,7 @@ const HomePage = () => {
               </Link>
               <div className="justify-center mt-20">
                 <img
-                  src="badge.svg"
+                  src="/badge.svg"
                   alt="liquidity pools"
                   className="h-full w-full"
                 />

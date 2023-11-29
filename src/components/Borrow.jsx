@@ -9,7 +9,7 @@ const Borrow = () => {
   const eth = {
     name: "ETH",
     rate: "3.06",
-    img: "ethereum.svg",
+    img: "/ethereum.svg",
     mode: "LOW",
     method: "BORROW",
     page: "borroworder"
@@ -17,7 +17,7 @@ const Borrow = () => {
   const dai = {
     name: "DAI",
     rate: "4.32",
-    img: "dai.svg",
+    img: "/dai.svg",
     mode: "LOW",
     method: "BORROW",
     page: "borroworder"
@@ -25,7 +25,7 @@ const Borrow = () => {
   const usdc = {
     name: "USDC",
     rate: "4.89",
-    img: "usdc.svg",
+    img: "/usdc.svg",
     mode: "LOW",
     method: "BORROW",
     page: "borroworder"
@@ -33,7 +33,7 @@ const Borrow = () => {
   const wbtc = {
     name: "WBTC",
     rate: "2.00",
-    img: "wbtc.svg",
+    img: "/wbtc.svg",
     mode: "LOW",
     method: "BORROW",
     page: "borroworder"
