@@ -1,26 +1,29 @@
 import React from "react";
 import { WalletContext } from "../Contexts/WalletContext";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 const LendWithConfidenceForm = (props) => {
   const { connected } = useContext(WalletContext);
   const { setConnected } = useContext(WalletContext);
   const [isDropdownOpenAmount, setIsDropdownOpenAmount] = useState(false);
   const [optionAmount, setOptionAmount] = useState(props.id);
+  const { ETH, DAI, USDC, WBTC } = useContext(WalletContext);
+  const [page, setPage] = useState(props.id);
 
   const toggleDropdownAmount = () => {
     setIsDropdownOpenAmount(!isDropdownOpenAmount);
   };
 
   const handleFormSubmit = (event) => {
-    event.preventDefault()
-    console.log("Submitted!")
-  }
+    event.preventDefault();
+    console.log("Submitted!");
+  };
 
   const handleDisabledButton = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     toast.error("Wallet not Connected!", {
       position: "bottom-center",
       autoClose: 3000,
@@ -30,12 +33,43 @@ const LendWithConfidenceForm = (props) => {
       draggable: true,
       progress: undefined,
       theme: "dark",
-    });          
+    });
+  };
+
+  let selectedCrypto = null;
+
+  switch (optionAmount) {
+    case "ETH":
+      selectedCrypto = ETH;
+      break;
+    case "DAI":
+      selectedCrypto = DAI;
+      break;
+    case "USDC":
+      selectedCrypto = USDC;
+      break;
+    case "WBTC":
+      selectedCrypto = WBTC;
+      break;
+    default:
+      break;
   }
+
+  if (!selectedCrypto) {
+    return null;
+  }
+
+  useEffect(() => {
+    if(page !== optionAmount){
+      window.location.href = `/lend/${page}`;}
+  }, [page]);
 
   return (
     <div>
-      <form onSubmit={ connected ? handleFormSubmit : handleDisabledButton} className="max-w-fit mx-auto mr-16 bg-white px-16 py-16 rounded-2xl shadow-black shadow-md">
+      <form
+        onSubmit={connected ? handleFormSubmit : handleDisabledButton}
+        className="max-w-fit mx-auto mr-16 bg-white px-16 py-16 rounded-2xl shadow-black shadow-md"
+      >
         <div className="mb-12">
           <div className="-mb-3">
             <span className="text-4xl text-gray-900 font-semibold">
@@ -44,7 +78,7 @@ const LendWithConfidenceForm = (props) => {
           </div>
           <br></br>
           <span className="text-xl text-gray-400 font-medium">
-          Lock in a fixed interest rate today. Fixed rates guarantee your APY.
+            Lock in a fixed interest rate today. Fixed rates guarantee your APY.
           </span>
         </div>
         <div className="mb-4">
@@ -55,20 +89,30 @@ const LendWithConfidenceForm = (props) => {
             1. Select a maturity & fix your rate
           </label>
           <div className="inline-flex rounded-md shadow-sm mb-4" role="group">
-            <button
+            
+            {JSON.parse(selectedCrypto.data)[0] && <button
               type="button"
               className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
             >
-              <span className="text-gray-400 text-xs">Dec 19 2023</span>{" "}
-              <br></br> 0.750%
-            </button>
-            <button
+              <span className="text-gray-400 text-xs">{JSON.parse(selectedCrypto.labels.replace(/'/g, '"'))[0]}</span>{" "}
+              <br></br> {JSON.parse(selectedCrypto.data)[0]}
+            </button>}
+
+            {JSON.parse(selectedCrypto.data)[1] && <button
+              type="button"
+              className={`px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 ${ JSON.parse(selectedCrypto.data)[2] ? "" : "rounded-e-lg border-e"} hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700`}
+            >
+              <span className="text-gray-400 text-xs">{JSON.parse(selectedCrypto.labels.replace(/'/g, '"'))[1]}</span>
+              <br></br> {JSON.parse(selectedCrypto.data)[1]}
+            </button>}
+
+            {JSON.parse(selectedCrypto.data)[2] && <button
               type="button"
               className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
             >
-              <span className="text-gray-400 text-xs">Mar 18 2024</span>{" "}
-              <br></br> 7.567%
-            </button>
+              <span className="text-gray-400 text-xs">{JSON.parse(selectedCrypto.labels.replace(/'/g, '"'))[2]}</span>
+              <br></br> {JSON.parse(selectedCrypto.data)[2]}
+            </button>}
           </div>
         </div>
 
@@ -131,7 +175,7 @@ const LendWithConfidenceForm = (props) => {
               >
                 <li
                   onClick={() => {
-                    setOptionAmount("ETH");
+                    setPage("ETH")
                     toggleDropdownAmount();
                   }}
                 >
@@ -146,7 +190,7 @@ const LendWithConfidenceForm = (props) => {
                 </li>
                 <li
                   onClick={() => {
-                    setOptionAmount("DAI");
+                    setPage("DAI")
                     toggleDropdownAmount();
                   }}
                 >
@@ -161,7 +205,7 @@ const LendWithConfidenceForm = (props) => {
                 </li>
                 <li
                   onClick={() => {
-                    setOptionAmount("USDC");
+                    setPage("USDC")
                     toggleDropdownAmount();
                   }}
                 >
@@ -176,7 +220,7 @@ const LendWithConfidenceForm = (props) => {
                 </li>
                 <li
                   onClick={() => {
-                    setOptionAmount("WBTC");
+                    setPage("WBTC")
                     toggleDropdownAmount();
                   }}
                 >
@@ -194,9 +238,13 @@ const LendWithConfidenceForm = (props) => {
           </div>
         </div>
         <button
-        type="submit"
+          type="submit"
           className={`text-white font-medium rounded-lg text-lg w-full px-5 py-4 text-center
-          ${connected ? "bg-green-600 mt-2 hover:bg-green-500" : "cursor-not-allowed disabled bg-gray-600 mt-2 hover:bg-gray-500"}`}
+          ${
+            connected
+              ? "bg-green-600 mt-2 hover:bg-green-500"
+              : "cursor-not-allowed disabled bg-gray-600 mt-2 hover:bg-gray-500"
+          }`}
         >
           {connected ? "Confirm & Submit Trade" : "Connect Wallet to Trade"}
         </button>

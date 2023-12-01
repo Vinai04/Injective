@@ -4,13 +4,16 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import BorrowOrderForm from "./BorrowOrderForm";
 import LoadingPage from "./LoadingPage";
+import YieldCurve from "./YieldCurve";
+import { Chart, initTE } from "tw-elements";
 
-const BorrowOrder = () => {
+const BorrowOrder = (props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
+      initTE({ Chart });
     }, 2000);
 
     return () => clearTimeout(timer);
@@ -45,11 +48,12 @@ const BorrowOrder = () => {
                   <h1 className="text-6xl text-white font-semibold">
                     Fixed APY
                   </h1>
-                  <img
-                    className="-mt-28 w-full rounded-3xl"
-                    src={`/yield_curve.png`}
-                    alt=""
-                  />
+
+                  <div className="bg-white -mt-36 px-10 py-10 rounded-xl shadow-black shadow-md">
+                    <h2>Yield Curve</h2><br></br>  
+                    <YieldCurve id={id}/>
+                  </div>
+
                 </div>
               </div>
 

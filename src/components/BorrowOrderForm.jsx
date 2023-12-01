@@ -1,8 +1,10 @@
 import React from "react";
 import { WalletContext } from "../Contexts/WalletContext";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-router-dom";
+
 
 const BorrowOrderForm = (props) => {
   const { connected } = useContext(WalletContext);
@@ -12,6 +14,8 @@ const BorrowOrderForm = (props) => {
     useState(false);
   const [optionAmount, setOptionAmount] = useState(props.id);
   const [optionCollateral, setOptionCollateral] = useState(props.id);
+  const { ETH, DAI, USDC, WBTC } = useContext(WalletContext);
+  const [page, setPage] = useState(props.id);
 
   const toggleDropdownAmount = () => {
     setIsDropdownOpenAmount(!isDropdownOpenAmount);
@@ -40,6 +44,35 @@ const BorrowOrderForm = (props) => {
     });      
   }
 
+  let selectedCrypto = null;
+
+  switch (optionAmount) {
+    case "ETH":
+      selectedCrypto = ETH;
+      break;
+    case "DAI":
+      selectedCrypto = DAI;
+      break;
+    case "USDC":
+      selectedCrypto = USDC;
+      break;
+    case "WBTC":
+      selectedCrypto = WBTC;
+      break;
+    default:
+      break;
+  }
+
+  if (!selectedCrypto) {
+    return null;
+  }
+
+  useEffect(() => {
+    if(page !== optionAmount){
+      window.location.href = `/borrow/${page}`;}
+  }, [page]);
+
+
   return (
     <div>
       <form onSubmit={ connected ? handleFormSubmit : handleDisabledButton} className="max-w-fit mx-auto bg-white px-16 py-16 rounded-2xl shadow-black shadow-md">
@@ -62,20 +95,30 @@ const BorrowOrderForm = (props) => {
             1. Select a maturity & fix your rate
           </label>
           <div className="inline-flex rounded-md shadow-sm mb-4" role="group">
-            <button
+            
+            {JSON.parse(selectedCrypto.data)[0] && <button
               type="button"
               className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
             >
-              <span className="text-gray-400 text-xs">Dec 19 2023</span>{" "}
-              <br></br> 0.750%
-            </button>
-            <button
+              <span className="text-gray-400 text-xs">{JSON.parse(selectedCrypto.labels.replace(/'/g, '"'))[0]}</span>{" "}
+              <br></br> {JSON.parse(selectedCrypto.data)[0]}
+            </button>}
+
+            {JSON.parse(selectedCrypto.data)[1] && <button
+              type="button"
+              className={`px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 ${ JSON.parse(selectedCrypto.data)[2] ? "" : "rounded-e-lg border-e"} hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700`}
+            >
+              <span className="text-gray-400 text-xs">{JSON.parse(selectedCrypto.labels.replace(/'/g, '"'))[1]}</span>
+              <br></br> {JSON.parse(selectedCrypto.data)[1]}
+            </button>}
+
+            {JSON.parse(selectedCrypto.data)[2] && <button
               type="button"
               className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
             >
-              <span className="text-gray-400 text-xs">Mar 18 2024</span>{" "}
-              <br></br> 7.567%
-            </button>
+              <span className="text-gray-400 text-xs">{JSON.parse(selectedCrypto.labels.replace(/'/g, '"'))[2]}</span>
+              <br></br> {JSON.parse(selectedCrypto.data)[2]}
+            </button>}
           </div>
         </div>
 
@@ -138,7 +181,7 @@ const BorrowOrderForm = (props) => {
               >
                 <li
                   onClick={() => {
-                    setOptionAmount("ETH");
+                    setPage("ETH")
                     toggleDropdownAmount();
                   }}
                 >
@@ -153,7 +196,7 @@ const BorrowOrderForm = (props) => {
                 </li>
                 <li
                   onClick={() => {
-                    setOptionAmount("DAI");
+                    setPage("DAI")
                     toggleDropdownAmount();
                   }}
                 >
@@ -168,7 +211,7 @@ const BorrowOrderForm = (props) => {
                 </li>
                 <li
                   onClick={() => {
-                    setOptionAmount("USDC");
+                    setPage("USDC")
                     toggleDropdownAmount();
                   }}
                 >
@@ -183,7 +226,7 @@ const BorrowOrderForm = (props) => {
                 </li>
                 <li
                   onClick={() => {
-                    setOptionAmount("WBTC");
+                    setPage("WBTC")
                     toggleDropdownAmount();
                   }}
                 >
@@ -205,7 +248,7 @@ const BorrowOrderForm = (props) => {
 
         <div className="mb-8">
           <label
-            htmlFor="amount"
+            htmlFor="collateral"
             className="block mb-2 text-lg font-medium text-gray-700"
           >
             3. How much additional collateral do you want to deposit?
@@ -213,13 +256,13 @@ const BorrowOrderForm = (props) => {
           <div className="mb-5 flex">
             <input
               type="text"
-              id="amount"
+              id="collateral"
               className="bg-gray-50 mr-2 border px-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="0.00000000"
               required
             />
             <button
-              id="dropdownUsersButton"
+              id="dropdownUsersButton2"
               onClick={toggleDropdownCollateral}
               className={`text-white w-44 bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-4 text-center inline-flex items-center ${
                 isDropdownOpenCollateral ? "open" : ""
@@ -251,7 +294,7 @@ const BorrowOrderForm = (props) => {
           </div>
           <div>
             <div
-              id="dropdownUsers"
+              id="dropdownUsers2"
               className={`z-10 bg-white rounded-lg shadow w-full -mt-3 mb-6 dark:bg-gray-700 ${
                 isDropdownOpenCollateral ? "block" : "hidden"
               }`}

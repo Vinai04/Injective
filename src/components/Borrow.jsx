@@ -1,43 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Card from "./Card";
 import { useState, useEffect } from "react";
 import LoadingPage from "./LoadingPage";
+import { WalletContext } from "../Contexts/WalletContext";
 
 const Borrow = () => {
-  const eth = {
-    name: "ETH",
-    rate: "3.06",
-    img: "/ethereum.svg",
-    mode: "LOW",
-    method: "BORROW",
-    page: "borroworder"
-  };
-  const dai = {
-    name: "DAI",
-    rate: "4.32",
-    img: "/dai.svg",
-    mode: "LOW",
-    method: "BORROW",
-    page: "borroworder"
-  };
-  const usdc = {
-    name: "USDC",
-    rate: "4.89",
-    img: "/usdc.svg",
-    mode: "LOW",
-    method: "BORROW",
-    page: "borroworder"
-  };
-  const wbtc = {
-    name: "WBTC",
-    rate: "2.00",
-    img: "/wbtc.svg",
-    mode: "LOW",
-    method: "BORROW",
-    page: "borroworder"
-  };
+
+  const { ETH } = useContext(WalletContext)
+  const { DAI } = useContext(WalletContext)
+  const { USDC } = useContext(WalletContext)
+  const { WBTC } = useContext(WalletContext)
 
   const [loading, setLoading] = useState(true);
 
@@ -75,16 +49,16 @@ const Borrow = () => {
             </div>
             <div className="flex mt-2">
               <div className="m-8 flex">
-                <Card info={eth} />
+                <Card info={ETH} />
               </div>
               <div className="m-8 flex">
-                <Card info={dai} />
+                <Card info={DAI} />
               </div>
               <div className="m-8 flex">
-                <Card info={usdc} />
+                <Card info={USDC} />
               </div>
               <div className="m-8 flex">
-                <Card info={wbtc} />
+                <Card info={WBTC} />
               </div>
             </div>
             <div className="mt-60">
